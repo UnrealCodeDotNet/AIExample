@@ -30,9 +30,9 @@ void AEnemyAIController::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// popluate the target so we move toward it
 	APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 	BlackboardComponent->SetValueAsObject(TargetActor, PlayerPawn);
+
 }
 
 void AEnemyAIController::OnPossess(APawn* InPawn)
@@ -75,6 +75,11 @@ void AEnemyAIController::OnPossess(APawn* InPawn)
 		BehaviorTree->RootNode->Children.Add({ .ChildTask = MoveToTaskNode } );
 
 		RunBehaviorTree( BehaviorTree );
+
+        // popluate the target so we move toward it
+        APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+        BlackboardComponent->SetValueAsObject(TargetActor, PlayerPawn);
+
 	}
 }
 
