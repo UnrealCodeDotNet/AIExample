@@ -22,3 +22,15 @@ AEnemyCharacter::AEnemyCharacter()
 
 }
 
+void AEnemyCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+	
+	if( !Controller )
+	{
+		// AIControllerClass set in ctor, if placed in level this is not needed
+		// but if dynamically spawned it is
+		SpawnDefaultController();
+	}
+}
+

@@ -15,5 +15,5 @@ public:
 	// Sets default values for this character's properties
 	AEnemyCharacter();
 
-
+	virtual void BeginPlay() override;
 };
